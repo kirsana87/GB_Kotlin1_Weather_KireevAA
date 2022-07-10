@@ -9,8 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.gb_kotlin1_weather_kireevaa.domain.Weather
-import com.gb.k_2135_2136_2.viewmodel.AppState
 import com.google.android.material.snackbar.Snackbar
+import com.gb._kotlin1_weather_kireevaa.databinding.FragmentWeatherListBinding
+
+
+
 
 class WeatherListFragment : Fragment() {
 
@@ -20,6 +23,7 @@ class WeatherListFragment : Fragment() {
 
     lateinit var binding: FragmentWeatherListBinding
     lateinit var viewModel: WeatherListViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

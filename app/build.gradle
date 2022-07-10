@@ -6,8 +6,16 @@ plugins {
 android {
     compileSdk 32
 
+    viewBinding {
+        enabled = true
+    }
+    /*buildFeatures {
+        viewBinding = true
+    }*/
+
+
     defaultConfig {
-        applicationId "com.example.gb_kotlin1_weather_kireevaa"
+        applicationId "com.gb.k_2135_2136_2"
         minSdk 24
         targetSdk 32
         versionCode 1
