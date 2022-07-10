@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/gusiv/AndroidStudioProjects/GB_Kotlin1_Weather_KireevAA/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.184" />
+        <entry key="..\:/Users/gusiv/AndroidStudioProjects/GB_Kotlin1_Weather_KireevAA/app/src/main/res/drawable/ic_earth.xml" value="0.111" />
         <entry key="..\:/Users/gusiv/AndroidStudioProjects/GB_Kotlin1_Weather_KireevAA/app/src/main/res/drawable/ic_launcher_background.xml" value="0.184" />
+        <entry key="..\:/Users/gusiv/AndroidStudioProjects/GB_Kotlin1_Weather_KireevAA/app/src/main/res/drawable/ic_russia.xml" value="0.111" />
         <entry key="..\:/Users/gusiv/AndroidStudioProjects/GB_Kotlin1_Weather_KireevAA/app/src/main/res/layout/fragment_weather_list.xml" value="0.19746376811594202" />
       </map>
     </option>

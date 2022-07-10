@@ -1,16 +1,10 @@
 package com.gb.k_2135_2136_2.model
 
 import com.example.gb_kotlin1_weather_kireevaa.domain.Weather
-import com.example.gb_kotlin1_weather_kireevaa.model.Repository
+import com.example.gb_kotlin1_weather_kireevaa.model.RepositoryOne
 
 
-class RepositoryRemoteImpl:Repository {
-    override fun getListWeather(): List<Weather> {
-        Thread{
-            Thread.sleep(200L)
-        }.start()
-        return listOf(Weather())
-    }
+class RepositoryRemoteImpl: RepositoryOne {
 
     override fun getWeather(lat: Double, lon: Double): Weather {
         Thread{
