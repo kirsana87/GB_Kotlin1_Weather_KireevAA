@@ -1,4 +1,4 @@
-package com.example.gb_kotlin1_weather_kireevaa.weatherlist
+package com.example.gb_kotlin1_weather_kireevaa.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

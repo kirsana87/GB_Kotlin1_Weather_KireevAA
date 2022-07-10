@@ -1,18 +1,16 @@
 package com.gb_kotlin1_weather_kireevaa.weatherlist
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.gb_kotlin1_weather_kireevaa.R
 import com.example.gb_kotlin1_weather_kireevaa.details.OnItemClick
 import com.example.gb_kotlin1_weather_kireevaa.viewmodel.AppState
-import com.example.gb_kotlin1_weather_kireevaa.weatherlist.WeatherListViewModel
+import com.example.gb_kotlin1_weather_kireevaa.viewmodel.WeatherListViewModel
 
 class WeatherListFragment : Fragment(), OnItemClick {
 
