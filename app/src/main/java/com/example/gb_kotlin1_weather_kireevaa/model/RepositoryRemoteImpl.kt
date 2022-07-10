@@ -1,4 +1,4 @@
-package com.gb.k_2135_2136_2.model
+package com.example.gb_kotlin1_weather_kireevaa.model
 
 import com.example.gb_kotlin1_weather_kireevaa.domain.Weather
 import com.example.gb_kotlin1_weather_kireevaa.model.RepositoryOne
