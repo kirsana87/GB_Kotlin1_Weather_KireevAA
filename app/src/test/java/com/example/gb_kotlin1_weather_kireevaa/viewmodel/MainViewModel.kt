@@ -5,12 +5,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.gb_kotlin1_weather_kireevaa.repository.Repository
 import com.example.gb_kotlin1_weather_kireevaa.repository.RepositoryImpl
-import com.example.gb_kotlin1_weather_kireevaa.repository.RepositoryIpl
-import com.example.gb_kotlin1_weather_kireevaa.view.main.MainFragment
+
 
 
 cclass MainViewModel(
 private val liveDate: MutableLiveData<MainFragment.AppState> = MutableLiveData(),
+
+class MainFragment {
+    class AppState {
+
+    }
+
+}
+
 private val repository: Repository = RepositoryImpl()
 ) : ViewModel() {
     fun getLiveData(): LiveData<MainFragment.AppState> {
@@ -18,7 +25,7 @@ private val repository: Repository = RepositoryImpl()
     }
 
     fun getDataWeather() {
-        liveDate.postValue(AppState.Loading)
+        liveDate.postValue(MainFragment.AppState.Loading)
         if ((0..6).random() > 3) {
             Thread {
                 val answer = repository.getDataServer()
