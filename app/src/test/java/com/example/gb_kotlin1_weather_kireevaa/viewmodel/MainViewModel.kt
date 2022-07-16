@@ -4,28 +4,30 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.gb_kotlin1_weather_kireevaa.repository.Repository
+import com.example.gb_kotlin1_weather_kireevaa.repository.RepositoryImpl
 import com.example.gb_kotlin1_weather_kireevaa.repository.RepositoryIpl
+import com.example.gb_kotlin1_weather_kireevaa.view.main.MainFragment
 
 
-class MainViewModel(
-    private val liveDataWeather: MutableLiveData<AppSate> = MutableLiveData(),
-    private val repository: Repository = RepositoryIpl()
+cclass MainViewModel(
+private val liveDate: MutableLiveData<MainFragment.AppState> = MutableLiveData(),
+private val repository: Repository = RepositoryImpl()
 ) : ViewModel() {
-
-    fun getLiveDataWeather(): LiveData<AppSate> {
-        return liveDataWeather
+    fun getLiveData(): LiveData<MainFragment.AppState> {
+        return liveDate
     }
 
-    fun getWeather() {
-        liveDataWeather.postValue(AppSate.Loading)
-        Thread {
-            if ((0..6).random() > 3) {
-                val data = repository.getDataWeatherServer()
-                liveDataWeather.postValue(AppSate.Success(data))
-            } else {
-                liveDataWeather.postValue(AppSate.Error(Throwable("Ошибка")))
-            }
-        }.start()
-    }
+    fun getDataWeather() {
+        liveDate.postValue(AppState.Loading)
+        if ((0..6).random() > 3) {
+            Thread {
+                val answer = repository.getDataServer()
+                liveDate.postValue(AppState.Success(answer))
 
+            }.start()
+        } else {
+            liveDate.postValue(AppState.Error(Throwable("Ошибка")))
+        }
+
+    }
 }
