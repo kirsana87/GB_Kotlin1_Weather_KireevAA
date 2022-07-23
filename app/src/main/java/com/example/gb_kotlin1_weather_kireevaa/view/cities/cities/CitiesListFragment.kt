@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.gb_kotlin1_weather_kireevaa.R
 import com.example.gb_kotlin1_weather_kireevaa.databinding.ActivityMainBinding.inflate
+import com.example.gb_kotlin1_weather_kireevaa.databinding.FragmentCitiesListBinding
 import com.example.gb_kotlin1_weather_kireevaa.model.Location
 import com.example.gb_kotlin1_weather_kireevaa.model.Weather
 import com.example.gb_kotlin1_weather_kireevaa.view.cities.cities.CitiesFragmentAdapter
@@ -28,17 +29,12 @@ class CitiesListFragment : Fragment() {
 
     private val adapter = CitiesFragmentAdapter(object : OnItemViewClickListener {
         override fun onItemViewClick(weather: Weather) {
-            activity?.run { // run - название подходит больше по смыслу, потому run, а не apply
+            activity?.run {
                 supportFragmentManager
                     .beginTransaction()
                     .add(R.id.container, WeatherFragmentDetail.newInstance(
-                        // а здесь как раз apply, по тем же причинам, что и run
                         Bundle().apply {
-                            putParcelable(
-                                WeatherFragmentDetail.BUNDLE_EXTRA,
-                                weather
-                            )
-                        }
+                            putParcelable(WeatherFragmentDetail.BUNDLE_EXTRA, weather)}
                     ))
                     .addToBackStack("")
                     .commitAllowingStateLoss()
@@ -46,8 +42,7 @@ class CitiesListFragment : Fragment() {
         }
     })
 
-    private var location =
-        Location.Russia // Временное решение, потом локацию будем получать от Android
+    private var location = Location.Russia
 
     companion object {
         fun newInstance() = CitiesListFragment()
@@ -58,9 +53,7 @@ class CitiesListFragment : Fragment() {
         actionText: String,
         action: (View) -> Unit,
         length: Int = Snackbar.LENGTH_INDEFINITE
-    ) {
-        Snackbar.make(this, text, length).setAction(actionText, action).show()
-    }
+    ) { Snackbar.make(this, text, length).setAction(actionText, action).show() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -82,21 +75,20 @@ class CitiesListFragment : Fragment() {
 
     private fun renderData(appState: AppState) = when (appState) {
         is AppState.Success -> {
-            binding.citiesFragmentLoadingLayout.visibility = View.GONE
             adapter.setWeather(appState.weatherData)
         }
-
-        is AppState.Loading -> binding.citiesFragmentLoadingLayout.visibility = View.VISIBLE
-
         is AppState.Error -> {
             with(binding) {
-                citiesFragmentLoadingLayout.visibility = View.GONE
                 citiesFragmentRootLayout.showSnackBar(
                     getString(R.string.error),
                     getString(R.string.reload),
                     { viewModel.getWeather(location) })
             }
         }
+        else -> {}
+    }.also {
+        if (appState == AppState.Loading) binding.citiesFragmentLoadingLayout.visibility = View.VISIBLE
+        else binding.citiesFragmentLoadingLayout.visibility = View.GONE
     }
 
     private fun changeDataSet() {
@@ -117,8 +109,4 @@ class CitiesListFragment : Fragment() {
     interface OnItemViewClickListener {
         fun onItemViewClick(weather: Weather)
     }
-}
-
-class FragmentCitiesListBinding {
-
 }

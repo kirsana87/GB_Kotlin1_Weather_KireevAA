@@ -1,43 +1,23 @@
+@file:JvmName("CityKt")
+
 package com.example.gb_kotlin1_weather_kireevaa.model
 
-import android.os.Parcel
 import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class Weather(
-    val city: City? = getDefaultCity(),
-    val temperature: Int = 0,
-    val feelsLike: Int = 0
-): Parcelable {
-    constructor(parcel: Parcel) : this(
-        parcel.readParcelable(City::class.java.classLoader),
-        parcel.readInt(),
-        parcel.readInt()
-    ) {
-    }
+    @Parcelize
+    data class Weather(
+        val city: City? = getDefaultCity(),
+        val temperature: Int = 0,
+        val feelsLike: Int = 0
+    ): Parcelable
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeParcelable(city, flags)
-        parcel.writeInt(temperature)
-        parcel.writeInt(feelsLike)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Weather> {
-        override fun createFromParcel(parcel: Parcel): Weather {
-            return Weather(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Weather?> {
-            return arrayOfNulls(size)
-        }
-    }
-}
-
-annotation class Parcelize
+    @Parcelize
+    data class City(
+        val name: String,
+        val lat: Double,
+        val lon: Double
+    ) : Parcelable
 
 enum class Location {
     Russia, World;

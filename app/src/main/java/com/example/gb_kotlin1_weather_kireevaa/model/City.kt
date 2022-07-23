@@ -1,8 +1,9 @@
 package com.example.gb_kotlin1_weather_kireevaa.model
 
 import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-@Parcelize
+    @Parcelize
 data class City(
     val name: String,
     val lat: Double,
